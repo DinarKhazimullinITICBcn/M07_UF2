@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Iniciar sessio de l'usuari</h1>
+    <h1>{{$textFinal}}</h1>
     <!--Cream el formulari que manda la informacio a ../iniciar_sessio/UserLogin.php amb el metode POST-->
     <form action="../../iniciar_sessio/userLogin.php" method="post">
         <label>Correu Electronic</label>
@@ -21,6 +21,6 @@
         <button type="submit" name="send">Enviar</button>
     </form>
     <!--Creem un enllac a index.html per a registrarse-->
-    <a href="./signup">Registrar-se</a>
+    <a href="/dinar/signup/Creacio/d'usuari/nou">Registrar-se</a>
 </body>
 </html>
