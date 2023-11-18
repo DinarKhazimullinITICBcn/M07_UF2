@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::prefix('dinar')->group(function(){
-    Route::get('/signin', [SignController::class, 'signin']);
-    Route::get('/signup', [SignController::class, 'signup']);
+    Route::get('/signin/{valor1}/{valor2}/{valor3}/{valor4}', [SignController::class, 'signin']);
+    Route::get('/signup/{valor1}/{valor2}/{valor3}', [SignController::class, 'signup']);
 });
