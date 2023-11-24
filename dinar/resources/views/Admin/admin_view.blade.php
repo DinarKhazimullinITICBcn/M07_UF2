@@ -6,6 +6,12 @@
     <title>Admin</title>
 </head>
 <body>
-    <h1>{{$result}}</h1>
+    <h1>BENVINGUT/DA ADMIN</h1>
+    <div>
+        <a href="{{ route('centres') }}">Centres</a>
+        <a href="{{ route('alumnat') }}">Alumnat</a>
+        <a href="{{ route('professorat') }}">Professorat</a>
+    </div>
+    <a href="{{ route('signin') }}">Log out</a>
 </body>
 </html>
