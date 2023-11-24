@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function centres() {
-        return view('Admin.admin')->with(['result'=>'Aqui es mostraran els centres que el rol admin pot veure']);
-    }
     public function usuaris(Request $request) {
         $emailCorrecte = 'admin@admin.com';
         $passwdCorrecte = '1234';
@@ -18,6 +15,18 @@ class AdminController extends Controller
         if ($email == $emailCorrecte && $passwd == $passwdCorrecte) {
             return view('admin.admin_view');
         }
-        return view('signin');
+        return redirect('/dinar/signin');
+    }
+    public function centres() {
+        return view('admin.centres');
+    }
+    public function alumnat() {
+        return view('admin.alumant');
+    }
+    public function professorat() {
+        return view('admin.professorat');
+    }
+    public function adminVista(){
+        return view('admin.admin_view');
     }
 }
