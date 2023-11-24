@@ -6,7 +6,7 @@
     <title>Creacio usuario</title>
 </head>
 <body>
-    <h1>{{$textFinal}}</h1>
+    <h1>Iniciar sessio de l'usuari</h1>
     <!--Cream el formulari que manda la informacio a ../crear_usuari/index.php amb el metode POST-->
     <form action="../../crear_usuari/index.php" method="POST">
         <label>ID</label>
@@ -37,6 +37,6 @@
         <button type="submit" name="send">Enviar</button>
     </form>
     <!--Creem un enllac que envi a la pagina de login-->
-    <a href="/dinar/signin/Iniciar/sessio/de/l'usuari">Iniciar sessio usuari</a>
+    <a href=" {{ route('signup') }}">Iniciar sessio usuari</a>
 </body>
 </html>
