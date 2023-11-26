@@ -7,20 +7,18 @@
 </head>
 <body>
     <h1>Creacio de usuari</h1>
-    <!--Cream el formulari que manda la informacio a ../iniciar_sessio/UserLogin.php amb el metode POST-->
-    <form action="../../iniciar_sessio/userLogin.php" method="post">
+    <form action=" {{ route('usuaris') }} " method="post">
         <label>Correu Electronic</label>
         <input type="text" name="email">
         <br>
         <label>Contrasenya</label>
-        <input type="text" name="contrasenya">
+        <input type="text" name="passwd">
         <br>
         <input type="checkbox" name="active">
         <label for="active">Acordat de mi</label>
         <br>
         <button type="submit" name="send">Enviar</button>
     </form>
-    <!--Creem un enllac a index.html per a registrarse-->
     <a href=" {{ route('signup') }}">Registrar-se</a>
 </body>
 </html>
