@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Centre;
+use App\Models\Professor;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Centre::factory(30)->create();
+        Professor::factory(30)->create();
     }
 }
