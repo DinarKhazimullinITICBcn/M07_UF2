@@ -3,13 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignController;
 
-Route::get('/', function () {
-    return 'welcome';
-});
-
-Route::prefix('dinar')->group(function(){
-    Route::get('/signin', [SignController::class, 'signin'])->name('signin');
-    Route::get('/signup', [SignController::class, 'signup'])->name('signup');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+Route::prefix('Joel')->group(function(){
+    Route::get('/signin', [SignController::class,'signin'])->name('signin');
+    Route::get('/signup', [SignController::class,'signup'])->name('signup');
 });
 Route::prefix('metodepost')->group(function(){
     Route::post('products', [SignController::class, 'products'])->name('products');
