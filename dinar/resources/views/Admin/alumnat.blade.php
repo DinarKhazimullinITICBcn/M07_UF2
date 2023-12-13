@@ -25,6 +25,9 @@
         </tr>
     @endforeach
     </table>
-    <a href="{{route('adminVista')}}">ADMIN VISTA</a>
+    <div>
+        <a href="{{route('crearAlumne')}}">CREAR ALUMNE</a>
+        <a href="{{route('adminVista')}}">ADMIN VISTA</a>
+    </div>
 </body>
 </html>
