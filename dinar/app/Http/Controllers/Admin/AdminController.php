@@ -25,13 +25,7 @@ class AdminController extends Controller
         return view('admin.centres')->with(['centres'=>$centres]);
     }
     public function alumnat() {
-        $alumnes = array(
-            array("id" => 1, "name" => "Carles", "surname" => "Canals", "rol" => "Alumne", "email" => "roger@roger.com"),
-            array("id" => 2, "name" => "Sofia", "surname" => "Taraco", "rol" => "Alumne", "email" => "sara@sara.com"),
-            array("id" => 3, "name" => "Francesc", "surname" => "Riugal", "rol" => "Alumne", "email" => "pere@pere.com"),
-            array("id" => 4, "name" => "Laia", "surname" => "Manresa", "rol" => "Alumne", "email" => "sara@sara.com")
-        );
-        return view('admin.alumnat')->with(['alumnes'=>$alumnes]);
+        return view('admin.alumnat');
     }
     public function professorat() {
         $professors = array(
