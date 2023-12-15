@@ -22,6 +22,10 @@
             <td>{{ $alumne['surname'] }}</td>
             <td>{{ $alumne['rol'] }}</td>
             <td>{{ $alumne['email'] }}</td>
+            <!--Aquesta part agafar les rutes de modificar i eliminar amb la instancia de alumnes corresponent-->
+            <td><a href="{{ route('modificaAlumne', $alumne) }}">Modifica</a></td>
+            <td><a href="{{ route('eliminarAlumne', $alumne) }}">Eliminar</a></td>
+            <td><a href="{{ route('mostrarAlumne', $alumne) }}">Mostrar</a></td>
         </tr>
     @endforeach
     </table>
