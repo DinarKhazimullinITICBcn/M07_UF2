@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\ProfessoratController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AlumnesController;
@@ -24,5 +26,13 @@ use App\Http\Controllers\Admin\CentresController;
         Route::any('/eliminaCentres/{centre}',[CentresController::class, 'destroy'])->name('eliminaCentres');
         Route::any('/modificaCentres/{centre}',[CentresController::class, 'edit'])->name('modificaCentres');
         Route::any('/actualitzaCentres/{centre}',[CentresController::class, 'update'])->name('update');
+        // Rutes relacionades amb el professorat
+        Route::get('/professorat', [ProfessoratController::class, 'index'])->name('professorat');
+        Route::get('/crearProfessorat', [ProfessoratController::class, 'create'])->name('crearProfessorat');
+        Route::post('/inserirProfessorat', [ProfessoratController::class, 'store'])->name('inserirProfessorat');
+        Route::get('/modificaProfessorat/{professorat}', [ProfessoratController::class, 'edit'])->name('modificaProfessorat');
+        Route::post('/actualitzarProfessorat/{professorat}', [ProfessoratController::class, 'update'])->name('actualitzarProfessorat');
+        Route::get('/eliminarProfessorat/{professorat}', [ProfessoratController::class, 'destroy'])->name('eliminarProfessorat');
+        Route::get('/mostraProfessorat/{professorat}', [ProfessoratController::class, 'show'])->name('mostraProfessorat');
     });
 ?>
