@@ -13,7 +13,8 @@ class CentresController extends Controller
      */
     public function index()
     {
-        //
+        $centres = Centre::all();
+        return view('Admin.centres', compact('centres'));
     }
 
     /**
@@ -21,7 +22,7 @@ class CentresController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.registreCentres');
     }
 
     /**
@@ -29,7 +30,17 @@ class CentresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $centre = new Centre;
+        //Assignacio de dades amb noms de variabnles
+        $centre->name = $request->input('name');
+        $centre->adress = $request->input('adress');
+        $centre->cp = $request->input('cp');
+        $centre->city = $request->input('city');
+
+        $centre->save();
+
+        $centres = Centre::all();
+        return view('Admin.centres', compact('centres'));
     }
 
     /**
@@ -37,15 +48,16 @@ class CentresController extends Controller
      */
     public function show(Centre $centre)
     {
-        //
+        return view('Admin.centres', compact('centres'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Centre $centre)
+    public function edit(Request $request, Centre $centre)
     {
-        //
+        // Asignación de datos con nombres de variables
+        return view('Admin.modificaCentres', compact('centre'));
     }
 
     /**
@@ -53,7 +65,15 @@ class CentresController extends Controller
      */
     public function update(Request $request, Centre $centre)
     {
-        //
+        $centre->update([
+            $centre->name = $request->input('name'),
+            $centre->adress = $request->input('adress'),
+            $centre->cp = $request->input('cp'),
+            $centre->city = $request->input('city')
+        ]);
+
+        $centres = Centre::all();
+        return view('Admin.centres', compact('centres'));
     }
 
     /**
@@ -61,9 +81,9 @@ class CentresController extends Controller
      */
     public function destroy(Centre $centre)
     {
-        //
+        $centre->delete();
+        $centres = Centre::all();
+        return view('Admin.centres', compact('centres'));
     }
-    public function afegeixCentre(Centre $centre) {
-        return view('Admin.afegeixCentre') -> with(['result algo']);
-    }
+
 }
