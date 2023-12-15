@@ -1,8 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AlumnesController;
-
     Route::middleware(['admin_db'])->group(Function(){
         Route::post('/usuarisfaaf', [AdminController::class, 'usuaris'])->name('usuaris');
         Route::get('/centresfaaf', [AdminController::class, 'centres'])->name('centres');
@@ -18,5 +16,10 @@ use App\Http\Controllers\Admin\AlumnesController;
         Route::get('/mostrarAlumne/{alumne}', [AlumnesController::class, 'show'])->name('mostrarAlumne');
         Route::get('/professoratfaaf', [AdminController::class, 'professorat'])->name('professorat');
         Route::get('/adminVistafaaf', [AdminController::class, 'adminVista'])->name('adminVista');
+        Route::get('/crearCentres',[CentresController::class, 'create'])->name('crearCentres');
+        Route::post('/inserirCentres',[CentresController::class, 'store'])->name('inserirCentres');
+        Route::any('/eliminaCentres/{centre}',[CentresController::class, 'destroy'])->name('eliminaCentres');
+        Route::any('/modificaCentres/{centre}',[CentresController::class, 'edit'])->name('modificaCentres');
+        Route::any('/actualitzaCentres/{centre}',[CentresController::class, 'update'])->name('update');
     });
 ?>
