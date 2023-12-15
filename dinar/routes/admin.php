@@ -1,9 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AlumnesController;
+use App\Http\Controllers\Admin\CentresController;
     Route::middleware(['admin_db'])->group(Function(){
         Route::post('/usuarisfaaf', [AdminController::class, 'usuaris'])->name('usuaris');
-        Route::get('/centresfaaf', [AdminController::class, 'centres'])->name('centres');
         //Aquestes rutes son todes en base a AlumnesController
         Route::get('/alumnat', [AlumnesController::class, 'index'])->name('alumnat');
         Route::get('/crearAlumne', [AlumnesController::class, 'create'])->name('crearAlumne'); 
@@ -16,6 +17,8 @@ use App\Http\Controllers\Admin\AdminController;
         Route::get('/mostrarAlumne/{alumne}', [AlumnesController::class, 'show'])->name('mostrarAlumne');
         Route::get('/professoratfaaf', [AdminController::class, 'professorat'])->name('professorat');
         Route::get('/adminVistafaaf', [AdminController::class, 'adminVista'])->name('adminVista');
+        //Part del Joel
+        Route::get('/centres', [CentresController::class, 'index'])->name('centres');
         Route::get('/crearCentres',[CentresController::class, 'create'])->name('crearCentres');
         Route::post('/inserirCentres',[CentresController::class, 'store'])->name('inserirCentres');
         Route::any('/eliminaCentres/{centre}',[CentresController::class, 'destroy'])->name('eliminaCentres');
