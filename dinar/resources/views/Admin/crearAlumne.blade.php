@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Alumne</title>
 </head>
 <body>
     <h1>Crear alumne</h1>
+    <!--Creem un formulari amb la ruta de inserirAlumne amb aquesta informacio-->
     <form action="{{ route('inserirAlumne') }}" method="POST">
         <label>Nom</label>
         <input type="text" name="name">
