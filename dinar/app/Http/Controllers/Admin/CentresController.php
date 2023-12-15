@@ -33,7 +33,7 @@ class CentresController extends Controller
         $centre = new Centre;
         //Assignacio de dades amb noms de variabnles
         $centre->name = $request->input('name');
-        $centre->adress = $request->input('adress');
+        $centre->address = $request->input('adress');
         $centre->cp = $request->input('cp');
         $centre->city = $request->input('city');
 
@@ -67,7 +67,7 @@ class CentresController extends Controller
     {
         $centre->update([
             $centre->name = $request->input('name'),
-            $centre->adress = $request->input('adress'),
+            $centre->address = $request->input('adress'),
             $centre->cp = $request->input('cp'),
             $centre->city = $request->input('city')
         ]);
