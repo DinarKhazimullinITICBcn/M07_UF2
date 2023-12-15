@@ -3,74 +3,105 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\professorat;
+use App\Models\Professorat;
 use Illuminate\Http\Request;
 
 class ProfessoratController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra una llista dels recursos.
      */
     public function index()
     {
-        $professorats = professorat::all();
+        // Recupera tots els professors de la base de dades
+        $professorats = Professorat::all();
 
-        return view('professorat')->with(['professors' => $professorats]);  
-    
+        // Mostra la vista 'professorat' amb els professors recuperats
+        return view('professorat')->with(['professors' => $professorats]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra el formulari per crear un nou recurs.
      */
     public function create()
     {
-        //
+        // Mostra el formulari per crear un nou professorat
+        return view('CrearRegistre');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Emmagatzema un recurs creat recentment.
      */
     public function store(Request $request)
     {
-        $professorat = new professorat;
+        // Crea una nova instància de professorat
+        $professorat = new Professorat;
+
+        // Estableix els atributs basant-se en les dades d'entrada del formulari
         $professorat->name = $request->input('name');
         $professorat->surname = $request->input('surname');
-        $professorat->rol = $request->input('rol');
+        $professorat->rol = 'professor';
         $professorat->email = $request->input('email');
 
-        return redirect()->route('professorats.index');
+        // Desa la nova instància de professorat a la base de dades
+        $professorat->save();
 
+        // Mostra la vista 'crearRegistre'
+        return view('crearRegistre');
     }
 
     /**
-     * Display the specified resource.
+     * Mostra el recurs especificat.
      */
     public function show(Professorat $professorat)
     {
-        //
+        // Mostra la vista 'mostraProfessorat' amb el professorat especificat
+        return view('mostraProfessorat')->with(['professor' => $professorat]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra el formulari per editar el recurs especificat.
      */
     public function edit(Professorat $professorat)
     {
-        //
+        // Mostra la vista 'modificaProfessorat' amb el professorat especificat
+        return view('modificaProfessorat')->with(['professor' => $professorat]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualitza el recurs especificat a l'emmagatzematge.
      */
     public function update(Request $request, Professorat $professorat)
     {
-        //
+        // Valida les dades d'entrada del formulari
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        // Actualitza el registre de professorat amb les dades validades
+        $professorat->update($validatedData);
+
+        // Recupera tots els professors de la base de dades
+        $professorats = Professorat::all();
+
+        // Mostra la vista 'professorat' amb els professors recuperats
+        return view('professorat')->with(['professors' => $professorats]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el recurs especificat de l'emmagatzematge.
      */
     public function destroy(Professorat $professorat)
     {
-        //
+        // Elimina el professorat especificat de la base de dades
+        $professorat->delete();
+
+        // Recupera tots els professors de la base de dades
+        $professorats = Professorat::all();
+
+        // Mostra la vista 'professorat' amb els professors recuperats
+        return view('professorat')->with(['professors' => $professorats]);
     }
 }
