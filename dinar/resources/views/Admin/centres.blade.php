@@ -18,7 +18,7 @@
     @foreach ($centres as $centre)
     <tr>
         <td>{{ $centre->name }}</td>
-        <td>{{ $centre->adress }}</td>
+        <td>{{ $centre->address }}</td>
         <td>{{ $centre->cp }}</td>
         <td>{{ $centre->city }}</td>
 <td><a href="{{ route('modificaCentres',$centre) }}">Modifica</a></td>
@@ -27,6 +27,6 @@
     @endforeach
 </table>
     <a href="{{ route('crearCentres') }}">ADD CENTRE</a>
-    <a href="{{ route('viewGet') }}">ADMIN VISTA</a><br>
+    <a href="{{ route('adminVista') }}">ADMIN VISTA</a><br>
 </body>
 </html>
