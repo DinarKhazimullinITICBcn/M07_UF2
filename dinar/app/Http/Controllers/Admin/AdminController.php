@@ -7,45 +7,42 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    private $emailAdmin = "joel@gmail.com";
-    private $contraAdmin = "edu";
-    public function view(Request $request)
-    {
-        $emailUsuari = $request->input('email');
-        $contraUsuari = $request->input('password');
-
-        if ($emailUsuari === $this->emailAdmin && $contraUsuari === $this->contraAdmin) {
-            return view('Admin.admin')->with(['result' => 'Aqui es mostraran els centres que el rol admin por veure']);
+    public function usuaris(Request $request) {
+        $emailCorrecte = 'admin@admin.com';
+        $passwdCorrecte = '1234';
+        $email = $request['email'];
+        $passwd = $request['passwd'];
+        if ($email == $emailCorrecte && $passwd == $passwdCorrecte) {
+            return view('admin.admin_view');
         }
-        return redirect('Joel/signin')->with('error', 'Email o contra incorrectes');
+        return redirect('/dinar/signin');
     }
-    public function centres()
-    {
-        /*
+    public function centres() {
         $centres = array(
-            array("ID" => 1, "NAME" => "TIC de BCN", "ADRESS" => "sancho de avila", "CP" => "08018", "CITY" => "BCN"),
-            array("ID" => 2, "NAME" => "Joel", "ADRESS" => "algo vasco", "CP" => "007", "CITY" => "BCN")
+            array("id" => 1, "name" => "Instritut TIC de Barcelona", "address" => "C/ de Sancho de Avila, 133", "cp" => "08018", "city" => "Barcelona"),
+            array("id" => 2, "name" => "Jaume Balmes", "address" => "C/ Diputacio, 150", "cp" => "08013",  "city" => "Barcelona")
         );
-        */
-        return view('Admin.centres')->with(['result' => 'Aqui es mostraran els centres que el rol admin por veure']);
+        return view('admin.centres')->with(['centres'=>$centres]);
     }
-    public function alumnat()
-    {
-        $alumnat = array(
-            array("ID" => 1, "NAME" => "Alex", "SURNAME" => "Andreev", "ROL" => "Alumne", "EMAIL" => "alex@gmail.com"),
-            array("ID" => 2, "NAME" => "Joel", "SURNAME" => "Ghanem", "ROL" => "Alumne", "EMAIL" => "joel@gmail.com")
+    public function alumnat() {
+        $alumnes = array(
+            array("id" => 1, "name" => "Carles", "surname" => "Canals", "rol" => "Alumne", "email" => "roger@roger.com"),
+            array("id" => 2, "name" => "Sofia", "surname" => "Taraco", "rol" => "Alumne", "email" => "sara@sara.com"),
+            array("id" => 3, "name" => "Francesc", "surname" => "Riugal", "rol" => "Alumne", "email" => "pere@pere.com"),
+            array("id" => 4, "name" => "Laia", "surname" => "Manresa", "rol" => "Alumne", "email" => "sara@sara.com")
         );
-        return view('Admin.alumnat',['alumnat' => $alumnat])->with(['result' => 'Aqui es mostraran els centres que el rol admin por veure']);
+        return view('admin.alumnat')->with(['alumnes'=>$alumnes]);
     }
-    public function professorat()
-    {
-        $professorat = array(
-            array("ID" => 1, "NAME" => "Moises", "ROL" => "Professor", "EMAIL" => "moises@gmail.com"),
-            array("ID" => 2, "NAME" => "Jordi", "ROL" => "Professor", "EMAIL" => "jordi@gmail.com")
+    public function professorat() {
+        $professors = array(
+            array("id" => 1, "name" => "Roger", "surname" => "Sobrino", "rol" => "Professor", "email" => "roger@roger.com"),
+            array("id" => 2, "name" => "Sara", "surname" => "Gonzalez", "rol" => "Professora", "email" => "sara@sara.com"),
+            array("id" => 3, "name" => "Pere", "surname" => "Guitart", "rol" => "Professor", "email" => "pere@pere.com"),
+            array("id" => 4, "name" => "Oriol", "surname" => "Xisco", "rol" => "Professor", "email" => "sara@sara.com")
         );
-        return view('Admin.professorat',['professorat' => $professorat])->with(['result' => 'Aqui es mostraran els centres que el rol admin por veure']);
+        return view('admin.professorat')->with(['professors'=>$professors]);
     }
-    public function viewGet(){
-        return view('Admin.admin');
+    public function adminVista(){
+        return view('admin.admin_view');
     }
 }
