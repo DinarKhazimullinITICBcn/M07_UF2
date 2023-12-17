@@ -30,9 +30,9 @@ use App\Http\Controllers\Admin\CentresController;
         Route::get('/professorat', [ProfessoratController::class, 'index'])->name('professorat');
         Route::get('/crearProfessorat', [ProfessoratController::class, 'create'])->name('crearProfessorat');
         Route::post('/inserirProfessorat', [ProfessoratController::class, 'store'])->name('inserirProfessorat');
-        Route::get('/modificaProfessorat/{professorat}', [ProfessoratController::class, 'edit'])->name('modificaProfessorat');
-        Route::post('/actualitzarProfessorat/{professorat}', [ProfessoratController::class, 'update'])->name('actualitzarProfessorat');
-        Route::get('/eliminarProfessorat/{professorat}', [ProfessoratController::class, 'destroy'])->name('eliminarProfessorat');
-        Route::get('/mostraProfessorat/{professorat}', [ProfessoratController::class, 'show'])->name('mostraProfessorat');
+        Route::get('/modificaProfessorat/{professor}', [ProfessoratController::class, 'edit'])->name('modificaProfessorat');
+        Route::post('/actualitzarProfessorat/{professor}', [ProfessoratController::class, 'update'])->name('actualitzarProfessorat');
+        Route::get('/eliminarProfessorat/{professor}', [ProfessoratController::class, 'destroy'])->name('eliminarProfessorat');
+        Route::get('/mostraProfessorat/{professor}', [ProfessoratController::class, 'show'])->name('mostraProfessorat');
     });
 ?>
